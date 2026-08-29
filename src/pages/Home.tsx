@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MOCK_CATEGORIES, MOCK_PRODUCTS } from '@/lib/mockData';
 import { ProductCard } from '@/components/ui/ProductCard';
-import { Button } from '@/components/ui/Button';
+import { buttonVariants } from '@/components/ui/Button';
 import { HeroCarousel } from '@/components/ui/HeroCarousel';
 import { motion } from 'framer-motion';
 
@@ -13,7 +13,7 @@ export const Home = () => {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true, margin: "-50px" },
-    transition: { duration: 0.7, ease: "easeOut" }
+    transition: { duration: 0.7, ease: "easeOut" as const }
   };
 
   return (
@@ -71,10 +71,8 @@ export const Home = () => {
           <p className="text-secondary/80 font-light leading-relaxed mb-10 max-w-2xl mx-auto">
             From the heart of Dharmapuri to your wardrobe. We curate premium jewellery, timeless ethnic wear, and contemporary accessories that celebrate your unique style.
           </p>
-          <Link to="/about">
-            <Button variant="outline" className="border-secondary text-secondary hover:bg-secondary hover:text-primary tracking-widest uppercase">
-              Our Story
-            </Button>
+          <Link to="/about" className={buttonVariants({ variant: "outline", className: "border-secondary text-secondary hover:bg-secondary hover:text-primary tracking-widest uppercase" })}>
+            Our Story
           </Link>
         </div>
       </motion.section>
@@ -108,8 +106,8 @@ export const Home = () => {
           ))}
         </div>
         <div className="mt-10 text-center md:hidden">
-          <Link to="/new-arrivals">
-            <Button variant="outline" className="w-full tracking-widest uppercase">View All Arrivals</Button>
+          <Link to="/new-arrivals" className={buttonVariants({ variant: "outline", className: "w-full tracking-widest uppercase" })}>
+            View All Arrivals
           </Link>
         </div>
       </motion.section>
@@ -124,10 +122,8 @@ export const Home = () => {
           <p className="text-text-light mb-8 font-light">
             Our styling team is available on WhatsApp to help you find the perfect piece or place an order directly.
           </p>
-          <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer">
-            <Button className="bg-[#25D366] text-white hover:bg-[#128C7E] border-none tracking-widest uppercase px-8 h-14">
-              Chat on WhatsApp
-            </Button>
+          <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className={buttonVariants({ className: "bg-[#25D366] text-white hover:bg-[#128C7E] border-none tracking-widest uppercase px-8 h-14" })}>
+            Chat on WhatsApp
           </a>
         </div>
       </motion.section>
